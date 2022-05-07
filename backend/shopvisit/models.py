@@ -1,4 +1,13 @@
 from django.db import models
+from django.core.exceptions import ValidationError
+
+
+def validate_phone_number(value):
+    if not value.isdigit():
+        raise ValidationError(
+            ('Неккоректный телефонный номер'),
+            params={'value': value},
+        )
 
 
 class Worker(models.Model):
@@ -6,7 +15,8 @@ class Worker(models.Model):
     phone_number = models.CharField(
         'Номер телефона',
         max_length=255,
-        unique=True
+        unique=True,
+        validators=(validate_phone_number,)
     )
 
     class Meta:

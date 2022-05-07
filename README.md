@@ -22,7 +22,6 @@ POSTGRES_PASSWORD=<ваш password>
 DB_HOST=localhost
 DB_PORT=5432
 
-DJANGO_DEBUG=''
 SECRET_KEY=<ваш secret key>
 ```
 3. Установить зависимости:
@@ -36,7 +35,18 @@ python manage.py makemigrations
 ```
 python manage.py migrate
 ```
-5. Создать администратора:
+5. Создать статику:
+```
+python manage.py collectstatic
+```
+6. Создать администратора:
 ```
 python manage.py createsuperuser
+```
+### Документация API:
+```
+http://127.0.0.1:8000/swagger/
+```
+```
+http://127.0.0.1:8000/redoc/
 ```
